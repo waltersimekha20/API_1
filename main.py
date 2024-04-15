@@ -23,6 +23,10 @@ migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
 
 db.init_app(app)
+CORS(app)
+
+
+CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True, methods=["GET", "POST", "PUT"], allow_headers=["Content-Type"])
 
 
 
@@ -59,7 +63,7 @@ def register_user():
     })
     
     
-@app.route('/login', methods = ['POST'])
+@app.route('/login', methods = ['GET'])
 def login_user():
     email = request.json['email']
     password = request.json['password']

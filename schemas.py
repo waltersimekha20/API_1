@@ -2,6 +2,7 @@ from marshmallow import Schema, fields
 
 
 class ProductsSchema(Schema):
+    id = fields.Integer()
     name = fields.String()
     description = fields.String()
     manufacturer= fields.String()
